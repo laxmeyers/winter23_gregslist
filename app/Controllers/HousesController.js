@@ -27,6 +27,7 @@ export class HousesController {
     console.log('Hello this is the houses Controller')
 
     appState.on('house', _drawHouse)
+    appState.on('houses', _drawHouses)
     
   }
   
@@ -54,6 +55,17 @@ export class HousesController {
       let formData = getFormData(form)
 
       housesService.handleFormSubmit(formData)
+    } catch (error) {
+      Pop.error(error)
+    }
+  }
+
+  async deleteHouse(houseId){
+    try {
+      const yes = await Pop.confirm('Are you sure?')
+      if (!yes){return}
+
+      housesService.deleteHouse(houseId)
     } catch (error) {
       Pop.error(error)
     }

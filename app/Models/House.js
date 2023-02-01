@@ -52,6 +52,10 @@ export class House {
                 <label for='sqft'>Square Feet</label>
             </div>
             <div class='form-floating mb-3'>
+                <input type='number' class='form-control' name='price' id='price' required>
+                <label for='price'>Price</label>
+            </div>
+            <div class='form-floating mb-3'>
                 <input type='url' class='form-control' name='imgUrl' id='imgUrl' required>
                 <label for='imgUrl'>Image Url</label>
             </div>
@@ -77,6 +81,7 @@ export class House {
                 alt="${this.name}" class="rounded">
                 <p><b>${this.name} ${this.sqft}sqft - $${this.price}</b></p>
             </div>
+            <button class="btn btn-danger" data-bs-dismiss="modal" onclick="app.housesController.deleteHouse('${this.id}')">Delete</button>
         </div>
             `
     }

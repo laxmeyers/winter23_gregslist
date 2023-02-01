@@ -16,19 +16,7 @@ class AppState extends EventEmitter {
   car = null
   
   /** @type {import('./Models/House').House[]} */
-  houses = [
-    new House ({
-      year: '1974',
-      name: 'Mid-Century Modern Single Family Home',
-      bedrooms: 3,
-      bathrooms: 2,
-      sqft : 1400,
-      price: 375600,
-      description: 'old nice house',
-      imgUrl: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-    })
-    
-  ]
+  houses = loadState('houses', [House])
   
   /** @type {import('./Models/House').House} */
   // @ts-ignore

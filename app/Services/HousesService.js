@@ -1,10 +1,29 @@
 import { appState } from "../AppState.js";
+import { House } from "../Models/House.js";
+import { saveState } from "../Utils/Store.js";
 
 
 class HousesService {
-  handleFormSubmit(formData) {
-    throw new Error("Method not implemented.");
+  deleteHouse(houseId) {
+    let houseIndex = appState.houses.findIndex(h => h.id == houseId)
+
+    if (houseIndex == -1){
+        throw new Error('Not a good id.')
+    }
+
+    appState.houses.splice(houseIndex, 1)
+    saveState('houses', appState.houses)
+    appState.emit('houses')
   }
+
+  handleFormSubmit(formData) {
+    let house = new House(formData)
+
+    appState.houses.push(house)
+    appState.emit('houses')
+    saveState('houses', appState.houses)
+  }
+  
   setActiveHouse(houseId) {
     let house =  appState.houses.findIndex(h => h.id == houseId )
 
