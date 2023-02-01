@@ -12,6 +12,7 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Car').Car[]} */
   cars = loadState('cars', [Car])
   /** @type {import('./Models/Car').Car} */
+  // @ts-ignore
   car = null
   
   /** @type {import('./Models/House').House[]} */
@@ -21,7 +22,7 @@ class AppState extends EventEmitter {
       name: 'Mid-Century Modern Single Family Home',
       bedrooms: 3,
       bathrooms: 2,
-      sqtf : 1400,
+      sqft : 1400,
       price: 375600,
       description: 'old nice house',
       imgUrl: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
@@ -30,6 +31,7 @@ class AppState extends EventEmitter {
   ]
   
   /** @type {import('./Models/House').House} */
+  // @ts-ignore
   house = null
 }
 

@@ -9,8 +9,8 @@ export class JobsController {
 
   show() {
     
-    setText('add-listing-button', '🪦 Dead end Job?')
-    setText('listingFormLabel', '🪦 Dig up a new Job')
+    setText('add-listing-button', '😐 Dead end Job?')
+    setText('listingFormLabel', '☠ Dig up a new Job')
     setHTML('listings', 'YOUR JOB STARTS HERE....')
     setHTML('the-actual-form', 'Do your job lazy students')
   }
