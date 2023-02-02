@@ -43,19 +43,19 @@ export class Job {
         <form onsubmit='app.jobsController.handleFormSubmit()'>
 
             <div class='form-floating mb-3'>
-                <input type='text' class='form-control' name='job' id='job' required>
+                <input type='text' class='form-control' name='job' id='job' placeholder="Job" required>
                 <label for='job'>Job</label>
             </div>
             <div class='form-floating mb-3'>
-                <input type='number' class='form-control' name='pay' id='pay' required>
+                <input type='float' class='form-control' name='pay' id='pay' placeholder="Pay" required>
                 <label for='pay'>Pay</label>
             </div>
             <div class='form-floating mb-3'>
-                <input type='tel' class='form-control' name='contact' id='contact' required>
+                <input type='tel' class='form-control' name='contact' id='contact' placeholder="contact" required>
                 <label for='contact'>Contact</label>
             </div>
             <div class='form-floating mb-3'>
-                <input type='url' class='form-control' name='imgUrl' id='imgUrl' required>
+                <input type='url' class='form-control' name='imgUrl' id='imgUrl' placeholder="Image Url" required>
                 <label for='imgUrl'>Image Url</label>
             </div>
             <div class="d-flex my-4 gap-5 align-items-center">
