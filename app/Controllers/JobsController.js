@@ -1,5 +1,6 @@
 import { appState } from "../AppState.js"
 import { jobsService } from "../Services/JobsService.js"
+import { getFormData } from "../Utils/FormHandler.js"
 import { Pop } from "../Utils/Pop.js"
 import { setHTML, setText } from "../Utils/Writer.js"
 
@@ -13,10 +14,16 @@ function _drawJobs(){
   setHTML('listings', template)
 }
 
+function _drawJob(){
+  setText('listingModalLabel', `${appState.job.job} $${appState.job.pay}`)
+  setHTML('listing-modal-body', appState.job.jobModelTemplate)
+}
+
 export class JobsController {
 
   constructor() {
-    console.log('Hello this is the jobs Controller')
+    appState.on('job', _drawJob)
+    appState.on('jobs', _drawJobs)
   }
 
 
@@ -32,6 +39,30 @@ export class JobsController {
   setActiveJob(jobId){
     try {
       jobsService.setActiveJob(jobId)
+    } catch (error) {
+      Pop.error(error)
+    }
+  }
+
+  handleFormSubmit(){
+    try {
+      event?.preventDefault()
+
+      let form = event?.target
+      let formData = getFormData(form)
+
+      jobsService.handleFormSubmit(formData)
+    } catch (error) {
+      Pop.error(error)
+    }
+  }
+
+  async deleteHouse(jobId){
+    try {
+      const yes = await Pop.confirm('Are you sure?')
+      if (!yes){return}
+
+      jobsService.deleteHouse(jobId)
     } catch (error) {
       Pop.error(error)
     }

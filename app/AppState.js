@@ -22,16 +22,20 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/House').House} */
   // @ts-ignore
   house = null
-
+  
+  /** @type {import('./Models/Job').Job[]} */
   jobs = [
-      new Job({
-        job: "babysitter",
-        pay: 15.50,
-        contact: "208-794-5231",
-        imgUrl: "https://images.unsplash.com/photo-1585183575305-750ab15467b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-      }),
-      
+    new Job({
+      job: "babysitter",
+      pay: 15.50,
+      contact: "208-794-5231",
+      imgUrl: "https://images.unsplash.com/photo-1585183575305-750ab15467b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    }),
+    
   ]
+  
+  /** @type {import('./Models/Job').Job} */
+  job = null
 }
 
 export const appState = new Proxy(new AppState(), {
