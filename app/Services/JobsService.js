@@ -3,18 +3,18 @@ import { Job } from "../Models/Job.js";
 import { saveState } from "../Utils/Store.js";
 
 class JobsService {
-  deleteHouse(jobId) {
+  deleteJob(jobId) {
     let jobIndex = appState.jobs.findIndex(j => j.id == jobId)
 
     if (jobIndex == -1){
         throw new Error('Not a good id.')
     }
 
-    appState.houses.splice(jobIndex, 1)
+    appState.jobs.splice(jobIndex, 1)
     saveState('jobs', appState.jobs)
     appState.emit('jobs')
   }
-  
+
   handleFormSubmit(formData) {
     let job = new Job(formData)
 

@@ -26,12 +26,15 @@ export class Job {
 
     get jobModelTemplate() {
         return `<div class="col-md-4 my-3">
-        <div class="card elevation-2 car" onclick="app.jobsController.setActiveJob('${this.id}')" data-bs-toggle="modal" data-bs-target="#listingModal">
+        <div class="card elevation-2 car" data-bs-toggle="modal" data-bs-target="#listingModal">
             <img
             src="${this.imgUrl}"
             alt="${this.job}" class="rounded">
             <p><b>${this.job}$${this.pay}hr</b></p>
         </div>
+        <div>
+        <button class="btn btn-danger" data-bs-dismiss="modal" onclick="app.jobsController.deleteJob('${this.id}')">DELETE THE Job!!!!!</button>
+      </div>
     </div>`
     } 
 
@@ -57,7 +60,7 @@ export class Job {
             </div>
             <div class="d-flex my-4 gap-5 align-items-center">
                 <button class="btn" type="reset">Cancel</button>
-                <button class="btn btn-primary" type="submit" data-bs-dismiss="offcanvas">Submit</button>
+                <button class="btn btn-primary" type="submit">Submit</button>
             </div>
         
         </form>

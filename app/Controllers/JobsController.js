@@ -1,4 +1,5 @@
 import { appState } from "../AppState.js"
+import { Job } from "../Models/Job.js"
 import { jobsService } from "../Services/JobsService.js"
 import { getFormData } from "../Utils/FormHandler.js"
 import { Pop } from "../Utils/Pop.js"
@@ -30,7 +31,8 @@ export class JobsController {
   show() {
     
     _drawJobs()
-    // setText('add-listing-button', '😐 Dead end Job?')
+    setHTML('the-actual-form', Job.jobsFormTemplate())
+    setText('add-listing-button', '😐 Dead end Job?')
     // setText('listingFormLabel', '☠ Dig up a new Job')
     // setHTML('listings', 'YOUR JOB STARTS HERE....')
     // setHTML('the-actual-form', 'Do your job lazy students')
@@ -57,12 +59,12 @@ export class JobsController {
     }
   }
 
-  async deleteHouse(jobId){
+  async deleteJob(jobId){
     try {
       const yes = await Pop.confirm('Are you sure?')
       if (!yes){return}
 
-      jobsService.deleteHouse(jobId)
+      jobsService.deleteJob(jobId)
     } catch (error) {
       Pop.error(error)
     }
